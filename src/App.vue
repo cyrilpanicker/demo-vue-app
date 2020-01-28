@@ -53,6 +53,12 @@
     {{customCheckbox.checked}}
     <hr/>
 
+    <Todos :todos="todos.todoList" #default="{ todo }">
+      <span>{{todo.text}}</span>
+      <span v-if="todo.isComplete">✓</span>
+    </Todos>
+    <hr/>
+
   </div>
 </template>
 
@@ -63,6 +69,7 @@ import CustomInput2 from './components/CustomInput2';
 import CustomInput3 from './components/CustomInput3';
 import CustomButton from './components/CustomButton';
 import CustomCheckbox from './components/CustomCheckbox';
+import Todos from './components/Todos';
 
 export default {
   name: 'app',
@@ -72,7 +79,8 @@ export default {
     CustomInput2,
     CustomInput3,
     CustomButton,
-    CustomCheckbox
+    CustomCheckbox,
+    Todos
   },
   data () {
     return {
@@ -90,6 +98,15 @@ export default {
       },
       customCheckbox: {
         checked: true
+      },
+      todos: {
+        todoList: [
+          { id: 1, text: 'todo1', isComplete: false },
+          { id: 2, text: 'todo2', isComplete: false },
+          { id: 3, text: 'todo3', isComplete: true },
+          { id: 4, text: 'todo4', isComplete: false },
+          { id: 5, text: 'todo5', isComplete: true }
+        ]
       }
     };
   },
